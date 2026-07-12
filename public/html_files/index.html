@@ -3,25 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="5cr4ppyz">
-    <meta name="description" content="A simple web-based EPUB reader for E-pub files.">
-    <meta name="keywords" content="EPUB, E-book, Reader, Web-based, HTML5, CSS3, JavaScript">
-    <meta name="robots" content="index, follow">
-
-    <link rel="stylesheet" href="/css_files/index.css">
-    
-    <title>zpub_reader</title>
-    
-
+    <title>ZPUB_READER // Sovereign Vault</title>
+    <link rel="stylesheet" href="/css_files/index.css"> <!-- Absolute Path Fix -->
 </head>
 <body>
-    <header>
-        <h1 style="text-align: center; text-transform: uppercase;">zpub reader</h1>
 
-        <p>Status: ONLINE</p>
-        <p>Admin: 5cr4ppyz</p>
-        <p>Version: 1.0.0</p>
-    </header>
+<header>
+    <div class="container">
+        <h1>ZPUB_READER <span class="version">v1.2</span></h1>
+        <nav>Digital Asset Ledger / Elitebook Node</nav>
+    </div>
+</header>
 
+<main class="container">
+    <section id="vault-status">
+        <h2>Sovereign Assets</h2>
+        <table id="book-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Date Added</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="book-list">
+                <!-- Data injected here -->
+            </tbody>
+        </table>
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+        <p>System Log: 0 Loss Events. Host: Ubuntu Server.</p>
+    </div>
+</footer>
+
+<script>
+    async function loadVault() {
+        const response = await fetch('/api/books');
+        const books = await response.json();
+        const list = document.getElementById('book-list');
+        
+        if (books.length === 0) {
+            list.innerHTML = '<tr><td colspan="5" style="text-align:center">Vault Empty. Load assets to server.</td></tr>';
+            return;
+        }
+
+        list.innerHTML = books.map(book => `
+            <tr>
+                <td>${book.id}</td>
+                <td class="book-title">${book.title}</td>
+                <td>${book.author || 'Unknown'}</td>
+                <td>${new Date(book.added_date).toLocaleDateString()}</td>
+                <td><a href="${book.file_path}" class="read-btn">READ</a></td>
+            </tr>
+        `).join('');
+    }
+    loadVault();
+</script>
 </body>
 </html>
