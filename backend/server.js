@@ -4,7 +4,7 @@ const dotenv = require("dotenv").config(); // to read .env file configs
 const path = require("path"); // to handle file paths
 
 
-const port = process.env.PORT || 3000; // if port env not set run on 3000
+const port = process.env.port || 3000; // if port env not set run on 3000
 
 app.use(express.json()); // to parse incoming JSON requests
 app.use(express.static("public")); // to serve static files from the public directory
