@@ -1,0 +1,10 @@
+@font-face{
+    font-family: "custom_all";
+    src: url("../fonts/iphone.ttf") format("truetype");
+
+}
+
+/*For all*/
+*{
+    font-family: "arial";
+}
