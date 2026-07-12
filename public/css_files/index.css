@@ -1,3 +1,10 @@
+/* Let me inject an Iphone font */
+@font-face{
+    src: url("/fonts/iphone.otf") format("opentype");
+    font-family: "alltext_font";
+}
+
+
 /* SQLite.org Color Palette */
 :root {
     --bg-color: #ffffff;
@@ -5,10 +12,11 @@
     --sqlite-blue: #044a64;
     --border-gray: #dddddd;
     --header-bg: #f2f2f2;
+    --alltext-font: "alltext_font", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-family: var(--alltext-font);
     margin: 0;
     padding: 0;
     line-height: 1.4;
@@ -66,6 +74,7 @@ table {
     font-size: 0.9rem;
 }
 
+/* Table Header */
 th {
     background: var(--sqlite-blue);
     color: white;
@@ -73,6 +82,7 @@ th {
     padding: 8px;
 }
 
+/* Table Data */
 td {
     border: 1px solid var(--border-gray);
     padding: 8px;

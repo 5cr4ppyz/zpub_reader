@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZPUB_READER // Sovereign Vault</title>
+    <title>Zpub Reader</title>
     <link rel="stylesheet" href="/css_files/index.css"> <!-- Absolute Path Fix -->
 </head>
 <body>
@@ -41,28 +41,7 @@
     </div>
 </footer>
 
-<script>
-    async function loadVault() {
-        const response = await fetch('/api/books');
-        const books = await response.json();
-        const list = document.getElementById('book-list');
-        
-        if (books.length === 0) {
-            list.innerHTML = '<tr><td colspan="5" style="text-align:center">Vault Empty. Load assets to server.</td></tr>';
-            return;
-        }
-
-        list.innerHTML = books.map(book => `
-            <tr>
-                <td>${book.id}</td>
-                <td class="book-title">${book.title}</td>
-                <td>${book.author || 'Unknown'}</td>
-                <td>${new Date(book.added_date).toLocaleDateString()}</td>
-                <td><a href="${book.file_path}" class="read-btn">READ</a></td>
-            </tr>
-        `).join('');
-    }
-    loadVault();
-</script>
+<!-- Inject the js script, defer make it load first-->
+<script src="/js_files" defer></script>
 </body>
 </html>
