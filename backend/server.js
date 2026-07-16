@@ -15,19 +15,14 @@ app.get("/", (req, res) =>{
 
 });
 
-// If the route is not found
-/*
-app.use("*", (req, res) => {
-    res.json({
-        error: "Route not found!",
-        message: "Please check the URL and try again.",
-        debug: "This is a catch-all route for undefined endpoints.",
-        escalate: "Be sure to tell 5cr4ppyz about this issue if you think it's a bug.",
+// If the route is not found, return json
+app.use((req, res) => {
+    // Return 404 page when unexistant route is accessed
+    res.sendFile(path.join(__dirname, "../public/html_files/unknown_route.html"));
 
-    });
 });
-*/
 
+// Listen to the app on port 7000 of the machine
 app.listen(port, () =>{
     console.log(`Hey there 5cr4ppyz, zpub reader server is running on port ${port}`);
 });

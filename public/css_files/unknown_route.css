@@ -1,0 +1,115 @@
+/* Let me inject an Iphone font */
+@font-face{
+    src: url("/fonts/iphone.otf") format("opentype");
+    font-family: "alltext_font";
+}
+
+/* SQLite.org Aesthetic Protocol */
+:root {
+    --bg: #ffffff;
+    --text: #222222;
+    --sqlite-blue: #044a64;
+    --border-gray: #dddddd;
+    --header-bg: #f2f2f2;
+    --loss-red: #8b0000; /* Deep Red for Loss Prevention */
+    --mono: "alltext_font", "JetBrains Mono", monospace;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: var(--mono);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.vault-alert-container {
+    width: 90%;
+    max-width: 450px;
+    border: 1px solid var(--border-gray);
+    background: #fff;
+}
+
+.alert-header {
+    background: var(--sqlite-blue);
+    color: white;
+    padding: 8px 15px;
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    display: flex;
+    justify-content: space-between;
+    letter-spacing: 1px;
+}
+
+.alert-body {
+    padding: 30px;
+}
+
+.alert-title {
+    margin: 0 0 15px 0;
+    font-size: 1.2rem;
+    color: var(--loss-red);
+    letter-spacing: -1px;
+    border-bottom: 2px solid var(--loss-red);
+    padding-bottom: 5px;
+}
+
+.alert-message {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: #444;
+}
+
+/* The Technical Log Look */
+.audit-box {
+    background: #f9f9f9;
+    border: 1px solid var(--border-gray);
+    padding: 12px;
+    margin: 20px 0;
+    font-family: var(--mono);
+    font-size: 0.75rem;
+}
+
+.audit-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 4px;
+}
+
+.audit-row span:first-child {
+    color: #888;
+    font-weight: bold;
+}
+
+.alert-actions {
+    margin-top: 25px;
+}
+
+.btn-primary {
+    text-decoration: none;
+    color: var(--sqlite-blue);
+    border: 1px solid var(--sqlite-blue);
+    padding: 8px 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    display: inline-block;
+    transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+    background: var(--sqlite-blue);
+    color: white;
+}
+
+.alert-footer {
+    padding: 10px 15px;
+    background: var(--header-bg);
+    border-top: 1px solid var(--border-gray);
+    font-size: 0.65rem;
+    color: #999;
+    font-family: var(--mono);
+}
