@@ -11,14 +11,25 @@ app.use(express.static("public")); // to serve static files from the public dire
 
 // get request
 app.get("/", (req, res) =>{
-    res.sendFile(path.join(__dirname, "../public/html_files/index.html"));
+    return res.sendFile(path.join(__dirname, "../public/html_files/index.html"));
 
 });
+
+// Route for admin("5cr4ppyz") to test how epub works --- lol that's me bru!
+app.get("/testroute", (req, res)=>{
+    return res.sendFile(path.join(__dirname, "../public/html_files/testroute.html"));
+
+});
+
+// Route to serve the books
+// Telling the server that it can server this as a URL
+app.use("/testroute/get_mybooks", express.static(path.join(__dirname, "/epubs_available")));
+
 
 // If the route is not found, return json
 app.use((req, res) => {
     // Return 404 page when unexistant route is accessed
-    res.sendFile(path.join(__dirname, "../public/html_files/unknown_route.html"));
+    return res.sendFile(path.join(__dirname, "../public/html_files/unknown_route.html"));
 
 });
 

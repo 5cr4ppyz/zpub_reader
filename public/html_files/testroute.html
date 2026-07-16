@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    
+    <link rel="stylesheet" href="/css_files/testroute.css">
+    <title>Epub.js Reader</title>
+
+    <!-- 1. The 'Unzipper' -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.5/jszip.min.js"></script>
+    <!-- 2. The 'Reader' -->
+    <script src="https://cdn.jsdelivr.net/npm/epubjs/dist/epub.min.js"></script>
+
+</head>
+<body>
+    <!--Where the book lives-->
+    <div id="viewer">
+        <div id="loading">Opening book...</div>
+    </div>
+
+    <!--Control-->
+    <div class="controls">
+        <button id="prev" class="nav-btn">← Back</button>
+        <button id="next" class="nav-btn">Next →</button>
+    </div>
+
+    <!-- Load script-->
+    <script src="/js_files/testroute.js" defer></script>
+</body>
+
+</html>

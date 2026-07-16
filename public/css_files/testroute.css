@@ -1,0 +1,75 @@
+@font-face {
+    font-family: "alltext_font";
+    src: url("../fonts/iphone.otf") format("opentype");
+}
+
+:root{
+    --font:"alltext_font";
+}
+
+
+/* Layout - Center everything on the screen */
+body {
+    background-color: #f4f4f7; /* Soft grey background */
+    font-family: var(--font), 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+/* The Book Container */
+#viewer {
+    width: 90%;
+    max-width: 800px;
+    height: 80vh; /* 80% of the screen height */
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    border: 1px solid #e1e1e8;
+    overflow: hidden; /* Keeps the iframe corners rounded */
+    position: relative;
+}
+
+/* Controls Wrapper */
+.controls {
+    margin-top: 20px;
+    display: flex;
+    gap: 15px;
+}
+
+/* Navigation Buttons */
+.nav-btn {
+    background-color: #ffffff;
+    border: 1px solid #d1d1d6;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    color: #3a3a3c;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.nav-btn:hover {
+    background-color: #007aff; /* Apple Blue */
+    color: white;
+    border-color: #007aff;
+    transform: translateY(-1px);
+}
+
+.nav-btn:active {
+    transform: translateY(0);
+}
+
+/* Optional: Loading Text */
+#loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #8e8e93;
+}
