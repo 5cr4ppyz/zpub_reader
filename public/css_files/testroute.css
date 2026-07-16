@@ -1,75 +1,124 @@
+:root {
+    --bg: #ffffff;
+    --sidebar-bg: #fafafa;
+    --border: #eeeeee;
+    --text-main: #111111;
+    --text-muted: #888888;
+    --accent: #000000;
+    --font: "alltext"
+
+}
+
 @font-face {
-    font-family: "alltext_font";
-    src: url("../fonts/iphone.otf") format("opentype");
+    src: url("/fonts/iphone.otf") format("opentype");
+    font-family: "alltext";
+
 }
 
-:root{
-    --font:"alltext_font";
+h1{
+    font-family: "alltext";
+
 }
 
-
-/* Layout - Center everything on the screen */
-body {
-    background-color: #f4f4f7; /* Soft grey background */
-    font-family: var(--font), 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+body, html {
     margin: 0;
+    padding: 0;
+    height: 100vh;
+    font-family: "alltext";
+    color: var(--text-main);
+    background: var(--bg);
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+/* Sidebar - Very Clean */
+.sidebar {
+    width: 260px;
+    background: var(--sidebar-bg);
+    border-right: 1px solid var(--border);
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.brand {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 40px;
+    color: var(--text-muted);
+}
+
+.book-item {
+    font-size: 14px;
+    padding: 10px 0;
+    cursor: pointer;
+    color: var(--text-main);
+    border-bottom: 1px solid transparent;
+    transition: all 0.2s;
+    margin-bottom: 10px;
+}
+
+.book-item:hover {
+    color: var(--text-muted);
+}
+
+.book-item.active {
+    font-weight: bold;
+    border-bottom: 1px solid var(--accent);
+}
+
+/* Main Reader Area */
+.content {
+    flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    min-height: 100vh;
+    background: var(--bg);
 }
 
-/* The Book Container */
+#viewer-wrapper {
+    width: 100%;
+    max-width: 700px; /* Reading-optimized width */
+    height: 80vh;
+    margin-top: 40px;
+}
+
 #viewer {
-    width: 90%;
-    max-width: 800px;
-    height: 80vh; /* 80% of the screen height */
-    background: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); /* Soft shadow */
-    border: 1px solid #e1e1e8;
-    overflow: hidden; /* Keeps the iframe corners rounded */
-    position: relative;
+    height: 100%;
+    width: 100%;
 }
 
-/* Controls Wrapper */
-.controls {
-    margin-top: 20px;
+/* Minimalist Nav */
+.navigation {
+    margin-top: auto;
+    padding-bottom: 40px;
     display: flex;
-    gap: 15px;
+    gap: 40px;
 }
 
-/* Navigation Buttons */
-.nav-btn {
-    background-color: #ffffff;
-    border: 1px solid #d1d1d6;
-    padding: 10px 20px;
-    border-radius: 8px;
+.navigation button {
+    background: none;
+    border: none;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
     cursor: pointer;
-    font-size: 14px;
-    font-weight: 600;
-    color: #3a3a3c;
-    transition: all 0.2s ease;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    color: var(--text-main);
+    padding: 10px;
+    transition: opacity 0.2s;
+    font-family: "alltext";
+
 }
 
-.nav-btn:hover {
-    background-color: #007aff; /* Apple Blue */
-    color: white;
-    border-color: #007aff;
-    transform: translateY(-1px);
+.navigation button:hover {
+    opacity: 0.5;
 }
 
-.nav-btn:active {
-    transform: translateY(0);
-}
-
-/* Optional: Loading Text */
-#loading {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: #8e8e93;
+.navigation button:disabled {
+    opacity: 0.2;
+    cursor: default;
 }
