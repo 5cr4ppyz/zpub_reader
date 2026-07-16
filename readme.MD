@@ -4,4 +4,4 @@
 - Automated EPUB Vault for Ubuntu Server. High-leverage, local-first asset
 management.
 
-Status: OPERATIONAL Admin: 5cr4ppyz
+Status: Under development Admin: 5cr4ppyz
