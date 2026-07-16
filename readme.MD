@@ -1,5 +1,5 @@
 
-# ZPUB_READER
+# ZPUB READER
 
 - Automated EPUB Vault for Ubuntu Server. High-leverage, local-first asset
 management.
