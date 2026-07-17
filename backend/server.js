@@ -16,43 +16,42 @@ app.get("/", (req, res) =>{
 
 });
 
-// Route for admin("5cr4ppyz") to test how epub works --- lol that's me bru!
-app.get("/testroute", (req, res)=>{
-    return res.sendFile(path.join(__dirname, "../public/html_files/testroute.html"));
+// Get request to list the books to the website you see...
+// Say I return a JSON file
+app.get("/listbooks", (req, res) =>{
+    const folderpath = path.join(__dirname, "/epubs"); // Folder containing all the epubs, in the same backend directory
 
-});
-
-// Route to list all books in the folder
-app.get("/testroute/library", async (req, res)=>{
-    const vault = path.join(__dirname, "/epubs_available");
-
-    fs.readdir(vault, (error, files) =>{
+    fs.readdir(folderpath, (error, files) =>{
         if(error){
             return res.json({
-                error: "Cannot load folder, please contact admin..."
+                message: "Opps failed to read the EPUB folder path, scrappy!"
             });
 
         }
 
-        // Filter and only return files that end with the epub extension
-        const epubs_found = files.filter(f => f.endsWith(".epub"));
-        const bookcount = Object.keys(epubs_found).length; // Get the book count, getting count from objects
+        // However, check the epubs only 
+        const epubs_only = files.filter((file) =>{
+            return file.endsWith(".epub"); // Return all files that end with the epub extension
+        });
 
-        // Return json back to the client
+        const bk_count = epubs_only.length; // Get the length of the array
+
         return res.json({
-            books: epubs_found,
-            book_count: bookcount
-
+            books: epubs_only,
+            bookcount: bk_count
         });
 
 
     });
 
+
+
+
 });
 
 // Route to serve the books
 // Telling the server that it can server this as a URL
-app.use("/testroute/read_book", express.static(path.join(__dirname, "/epubs_available")));
+app.use("/vault/assets", express.static(path.join(__dirname, "/epubs")));
 
 
 // If the route is not found, return json
